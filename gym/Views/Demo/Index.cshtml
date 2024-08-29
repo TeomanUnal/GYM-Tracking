@@ -1,0 +1,62 @@
+﻿@model gym.Models.Cascade
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome - Cascade</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="text-center">
+                    <img src="~/lib/hur-du-bygger-framgangsrikt-gym.jpg" class="img-fluid mb-4" alt="Welcome Image">
+                    <p>Choose your membership and member.</p>
+                </div>
+                <div class="form-control">
+                    <label>Membership Information</label>
+                    <select id="MembershipID" class="form-control">
+                        <option value="">--Choose Membership--</option>
+                        @foreach (var membership in Model.MembershipList)
+                        {
+                            <option value="@membership.MembershipId">@membership.MembershipType</option>
+                        }
+                    </select>
+                    <br />
+                    <label>Member Information</label>
+                    <select id="MemberId" class="form-control">
+                        <option value="">--Choose Member--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(function () {
+            var membershipData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.MembershipList));
+
+            $('#MembershipID').change(function () {
+                var id = $('#MembershipID').val();
+                var selectedMembership = membershipData.find(function (item) {
+                    return item.MembershipId == id;
+                });
+
+                $('#MemberId').empty().append('<option value="">--Choose Member--</option>');
+                if (selectedMembership) {
+                    selectedMembership.Members.forEach(function (member) {
+                        $('#MemberId').append('<option value="' + member.MemberId + '">' + member.FirstName + '</option>');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

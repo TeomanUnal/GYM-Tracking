@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="text-center">
+                    <h2 class="display-4">Welcome</h2>
+                    <h5>Strengthen Your Mind and Body.</a>.</h5>
+                    <img src="~/lib/GYMCenterSporMerkezi4-4-1024x683.jpg" class="img-fluid mb-4" alt="Gym Image">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card" style="background-color: #E1F7F5;">
+                    <div class="card-body">
+                        <a class="nav-link" style="color: black; font-weight:bold" asp-area="" asp-controller="Bookings" asp-action="Index">Booking</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card" style="background-color: #E1F7F5;">
+                    <div class="card-body">
+                        <a class="nav-link" style="color: black; font-weight:bold;" asp-area="" asp-controller="Members" asp-action="Index">Members</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card" style="background-color: #E1F7F5;">
+                    <div class="card-body">
+                        <a class="nav-link" style="color: black;font-weight:bold" asp-area="" asp-controller="Memberships" asp-action="Index">Memberships</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card" style="background-color: #E1F7F5;">
+                    <div class="card-body">
+                        <a class="nav-link" style="color: black;font-weight:bold" asp-area="" asp-controller="Payments" asp-action="Index">Payments</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card" style="background-color: #E1F7F5;">
+                    <div class="card-body">
+                        <a class="nav-link" style="color: black;font-weight:bold" asp-area="" asp-controller="Trainers" asp-action="Index">Trainers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card" style="background-color: #E1F7F5;">
+                    <div class="card-body">
+                        <a class="nav-link" style="color: black;font-weight:bold" asp-area="" asp-controller="Sınıflar" asp-action="Index">Sınıflar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

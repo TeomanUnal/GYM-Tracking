@@ -1,0 +1,61 @@
+﻿@model IEnumerable<gym.Models.Sınıflar>
+
+@{
+    ViewData["Title"] = "Classes";
+}
+
+<h1>Classes</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered table-striped" id="tbllist">
+
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>
+                ClassName
+            </th>
+            <th>
+                Schedule
+            </th>
+            <th>
+                Trainer
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Schedule)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainer.FirstName)
+                </td>
+                <td>
+                    <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.ClassId">Edit</a> |
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.ClassId">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ClassId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    var js = jQuery.noConflict(true);
+    js(document).ready(function () {
+        js('#tbllist').DataTable({
+
+        });
+    });
+</script>
